@@ -5,6 +5,12 @@ const machineScore = document.querySelector("#machine-score");
 let humanScoreNumber = 0
 let machineScoreNumber = 0
 
+const GAME_OPTIONS = {
+  ROCK: 'rock',
+  PAPER: 'paper',
+  SCISSORS: 'scissors'
+}
+
 const playHuman = (humanchoice) => {
   playTheGame(humanchoice, playMachine());
 };
@@ -18,7 +24,7 @@ paperButton.addEventListener("click", () => playHuman("paper"));
 scissorsButton.addEventListener("click", () => playHuman("scissors"));
 
 const playMachine = () => {
-  const choices = ["rock", "paper", "scissors"];
+  const choices = [GAME_OPTIONS.ROCK, GAME_OPTIONS.PAPER, GAME_OPTIONS.SCISSORS];
   const randomNumber = Math.floor(Math.random() * 3);
 
   return choices[randomNumber];
@@ -30,9 +36,9 @@ const playTheGame = (human, machine) => {
   if (human === machine) {
     result.innerHTML = "&#128529;";
   } else if (
-    (human === "paper" && machine === "rock") ||
-    (human === "rock" && machine === "scissors") ||
-    (human === "scissors" && machine === "paper")
+    (human === GAME_OPTIONS.PAPER && machine === GAME_OPTIONS.ROCK) ||
+    (human === GAME_OPTIONS.ROCK && machine === GAME_OPTIONS.SCISSORS) ||
+    (human === GAME_OPTIONS.SCISSORS && machine === GAME_OPTIONS.PAPER)
   ) {
     humanScoreNumber++
     humanScore.innerHTML = humanScoreNumber;
